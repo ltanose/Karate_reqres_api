@@ -19,3 +19,17 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+test {
+    useJUnitPlatform()
+
+    systemProperty "karate.env", System.properties.getProperty("karate.env", "dev")
+    systemProperty "karate.options", System.properties.getProperty("karate.options")
+
+    outputs.upToDateWhen {false}
+
+    testLogging {events "passed", "skipped", "failed"
+    exceptionFormat "full"
+        showStandardStreams = true
+    }
+}
+

@@ -1,11 +1,13 @@
+@List_users_get
 Feature: lister to users in the api
 
   Background:
-    * url "https://reqres.in/api"
+    * url baseUrl
     * header Content-Type = "Application/json"
+    * header x-api-key = apiKey
 
 
-  @List_users_get
+
   Scenario: validate the status 200
     Given path "users/1"
     When method get

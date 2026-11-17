@@ -1,9 +1,10 @@
+@Register_user_post
 Feature: register to users in the api
 
   Background:
-    * url "https://reqres.in/api"
+    * url baseUrl
     * header Content-Type = "Application/json"
-
+    * header x-api-key = apiKey
 
 
   Scenario: validate register user status 200
@@ -33,8 +34,14 @@ Feature: register to users in the api
     When method post
     Then status 400
     And match response.error == 'Missing password'
+    And match response ==
+    """
+  {
+  "error": '#string'
+  }
+  """
 
-  @List_register_users_post
+
   Scenario: validate registration without email, status 400
     Given path "register"
     And request
@@ -46,3 +53,9 @@ Feature: register to users in the api
     When method post
     Then status 400
     And match response.error == 'Missing email or username'
+    And match response ==
+    """
+  {
+  "error": '#string'
+  }
+  """

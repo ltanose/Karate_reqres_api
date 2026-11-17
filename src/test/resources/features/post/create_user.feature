@@ -1,10 +1,10 @@
-@List_users_post
+@Create_users_post
 Feature: created to users in the api
 
   Background:
-    * url "https://reqres.in/api"
+    * url baseUrl
     * header Content-Type = "Application/json"
-
+    * header x-api-key = apiKey
 
 
   Scenario: validate create user status 201

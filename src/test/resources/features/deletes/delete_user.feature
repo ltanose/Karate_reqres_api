@@ -1,11 +1,12 @@
 @users_delete
-Feature: created to users in the api
+Feature: Delete to users in the api
 
   Background:
-    * url "https://reqres.in/api"
+    * url baseUrl
     * header Content-Type = "Application/json"
+    * header x-api-key = apiKey
 
   Scenario: validate create user status 201
     Given path "users/1000"
-    When method post
+    When method delete
     Then status 204
